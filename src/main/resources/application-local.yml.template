@@ -1,0 +1,16 @@
+#
+# Template for local settings.  These local settings are loaded by default when the app starts.
+# Copy this file to application-local.yml and then change any settings needed on your local workstation.
+#
+spring: 
+  datasource:
+    url: jdbc:mysql://localhost:3306/rest_demo
+    username: restdemo
+    password: R3sTE@sy!
+    
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#
+liquibase:
+  enabled: true

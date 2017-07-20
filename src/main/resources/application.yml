@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    include:
+    - local
+  datasource:
+    name: rest-demo
+  data:    
+    rest:
+      return-body-on-create: true
+      return-body-on-update: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+liquibase:
+  change-log: classpath:db/changelog/master.xml

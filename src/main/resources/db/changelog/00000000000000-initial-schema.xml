@@ -1,0 +1,75 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="sfranson (generated)" id="1500528868826-1">
+        <createTable tableName="course">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="instructor_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-2">
+        <createTable tableName="course_students">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-3">
+        <createTable tableName="person">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-4">
+        <createTable tableName="student">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="studentId" type="VARCHAR(255)"/>
+            <column name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-5">
+        <createIndex indexName="FK61ry13vjip2yrapfiag3mt9pq" tableName="course_students">
+            <column name="student_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-6">
+        <createIndex indexName="FKg9xyaqagqpfarrp1nht7tl5hb" tableName="course">
+            <column name="instructor_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-7">
+        <createIndex indexName="FKgut5xj4l8sk6hg3l0t2su2pnc" tableName="course_students">
+            <column name="course_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-8">
+        <createIndex indexName="FKnwsufvlvlnsxqv60ltj06bbfx" tableName="student">
+            <column name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-9">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="course_students" constraintName="FK61ry13vjip2yrapfiag3mt9pq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="student"/>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-10">
+        <addForeignKeyConstraint baseColumnNames="instructor_id" baseTableName="course" constraintName="FKg9xyaqagqpfarrp1nht7tl5hb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person"/>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-11">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_students" constraintName="FKgut5xj4l8sk6hg3l0t2su2pnc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course"/>
+    </changeSet>
+    <changeSet author="sfranson (generated)" id="1500528868826-12">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="student" constraintName="FKnwsufvlvlnsxqv60ltj06bbfx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person"/>
+    </changeSet>
+    
+</databaseChangeLog>

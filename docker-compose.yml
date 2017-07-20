@@ -1,0 +1,17 @@
+version: '2'
+volumes:
+  rest-demo-mysql-data:
+services:  
+  rest-demo-mysql:
+    image: mysql
+    container_name: rest-demo-mysql    
+    volumes:    
+     - rest-demo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: rest_demo
+      MYSQL_USER: restdemo
+      MYSQL_PASSWORD: R3sTE@sy!
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    ports:
+    - "3306:3306"
+  
